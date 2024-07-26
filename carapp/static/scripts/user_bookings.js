@@ -36,25 +36,29 @@ function getBookingDetails(bookingId, renderTarget, renderMethod) {
                             const locationAddress = data.address;
 
                             const bookingDetailsHtml1 = `
-                                  <div class="carInfoDiv">
-                                    <h2>Booking Details:</h2>
-                                    <p><b>Car Type:</b> ${car_type}</p>
-                                    <p><b>Price By Day:</b> $${price_by_day}</p>
-                                    <p><b>Location:</b> ${locationName}</p>
-                                    <p><b>Address:</b> ${locationAddress}</p>
-                                    <p><b>Pickup Date:</b> ${pickup_date}</p>
-                                    <p><b>Return Date:</b> ${return_date}</p>
-                                    <p><b>Total Cost:</b> $${total_cost}</p>
-                                  </div>
-                                  <div class="carImageDiv">
-                                    <h2>Car Image:</h2>
-                                    <div>
-                                      <img id="carImage" src="${image_url}" alt="Car Image">
+                                <div class="card-header bg-primary text-white">
+                                  <h2 class="h4 mb-0">Booking Details</h2>
+                                </div>
+                                <div class="card-body">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <p><strong>Car Type:</strong> ${car_type}</p>
+                                      <p><strong>Price By Day:</strong> $${price_by_day}</p>
+                                      <p><strong>Location:</strong> ${locationName}</p>
+                                      <p><strong>Address:</strong> ${locationAddress}</p>
+                                      <p><strong>Pickup Date:</strong> ${pickup_date}</p>
+                                      <p><strong>Return Date:</strong> ${return_date}</p>
+                                      <p><strong>Total Cost:</strong> $${total_cost}</p>
+                                    </div>
+                                    <div class="col-md-6 text-center">
+                                      <h2 class="h5 mb-3">Car Image</h2>
+                                      <img id="carImage" src="${image_url}" alt="Car Image" class="img-fluid rounded shadow">
                                     </div>
                                   </div>
+                                </div>
                             `;
                             const bookingDetailsHtml2 = `
-                                <div class="booking-details">
+                                <div class="booking-details card mb-4 shadow-lg">
                                   ${bookingDetailsHtml1}
                                 </div>
                             `;
