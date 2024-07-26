@@ -4,74 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/styles/booking-p.css">
-    <link rel="icon" href="../static/images/thumb.png" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/booking-page.css">
+    <link rel="icon" href="../static/images/thumb.png">
     <title>CarBnR</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-style: italic;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-            margin-top: 30px;
-        }
-        p {
-            font-weight: bolder;
-            color: #555;
-        }
-        #status {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            font-size: 16px;
-            color: #333;
-            width: 80%;
-            max-width: 400px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 9999;
-        }
-        .status-info {
-            background-color: #2196F3;
-            color: #fff;
-        }
-        .status-success {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-        .status-error {
-            background-color: #F44336;
-            color: #fff;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .form-control[readonly] {
-            background-color: #e9ecef;
-            opacity: 1;
-        }
-        .btn-primary {
-            background-color: #007BFF;
-            border-color: #007BFF;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-        img {
-            width: 100%;
-            border-radius: 4px;
-        }
-    </style>
 </head>
 <body>
     <div id="status"></div>
@@ -111,6 +46,10 @@
                         <input type="date" class="form-control" id="pickup_date" name="pickup_date" min="" required>
                     </div>
                     <div class="form-group">
+                        <label for="dateTime">Pickup Time:</label>
+                        <input type="time" class="form-control" id="dateTime" name="dateTime" min="" required>
+                    </div>
+                    <div class="form-group">
                         <label for="return_date">Return Date:</label>
                         <input type="date" class="form-control" id="return_date" name="return_date" min="" required>
                     </div>
@@ -129,8 +68,8 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../static/scripts/status-parameters.js"></script>
     <script src="../static/scripts/booking-page.js"></script>
-    <script src="../static/scripts/status-parameters.js" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
