@@ -75,15 +75,15 @@ $(document).ready(function() {
                 const dateTime = $("#dateTime").val();
 
                 if (!pickup_date) {
-                    updateStatus('Please enter pickup date.', 'error');
+                    updateStatus('Please select pickup date.', 'error');
                     setTimeout(hideStatus, 3000);
                     return;
                 } else if (!return_date) {
-                    updateStatus('Please enter return date.', 'error');
+                    updateStatus('Please select return date.', 'error');
                     setTimeout(hideStatus, 3000);
                     return;
                 } else if (!dateTime) {
-                    updateStatus('Please enter pickup time.', 'error');
+                    updateStatus('Please select pickup time.', 'error');
                     setTimeout(hideStatus, 3000);
                     return;
                 }
