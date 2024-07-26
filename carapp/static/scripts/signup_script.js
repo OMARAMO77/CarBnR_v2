@@ -1,22 +1,5 @@
 $(document).ready(init);
 const HOST = '3.83.253.202';
-// Function to parse URL parameters
-
-function getParameterByName(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
-function updateStatus(message, status) {
-    const statusElement = $('#status');
-    statusElement.html(message);
-    statusElement.attr('class', 'status-' + status);
-}
-
-function hideStatus() {
-    const statusElement = $('#status');
-    statusElement.html('');
-}
 
 function init() {
     // Add event listener to the form submission
@@ -28,7 +11,6 @@ function init() {
         createAccount();
     });
 }
-
 
 function createAccount() {
     const email = $('#email').val();
