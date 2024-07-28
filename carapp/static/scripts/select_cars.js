@@ -67,15 +67,15 @@ function searchCars() {
         const article = [
           '<article class="col-sm-12 col-md-6 col-lg-4 mb-4" data-car-id="' + car.id + '">', // car.id is a unique identifier
           '<div class="card h-100 shadow-lg">',
-          '<div class="position-relative h-40">',
-          `<img src="${car.image_url.replace(/ /g, '_')}" class="card-img-top" alt="${car.brand} ${car.model} ${car.year}">`,
+          '<div class="position-relative border h-40">',
+          `<img src="${car.image_url.replace(/ /g, '_')}" class="card-img-top" style="height: 180px;" alt="${car.brand} ${car.model} ${car.year}">`,
           '<div class="badge bg-danger position-absolute top-0 start-0" style="margin-left: -2em; margin-top: 1em;">New</div>',
           '</div>',
           '<div class="card-body">',
           `<h5 class="card-title">${car.brand} ${car.model} ${car.year}</h5>`,
           `<p class="card-text text-muted">Experience luxury and performance with the ${car.brand} ${car.model} ${car.year}.</p>`,
           '<div class="d-flex justify-content-between align-items-center">',
-          '<p class="card-text">',
+          '<p class="card-text mt-2">',
           availabilityText,
           '</p>',
           `<a href="#" class="btn btn-primary btn-sm">Book Now</a>`,
