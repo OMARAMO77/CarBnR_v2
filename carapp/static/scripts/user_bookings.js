@@ -116,22 +116,24 @@ function getBookingDetails(bookingId, renderTarget, renderMethod) {
 }
 
 $(document).ready(function() {
-    const userBookingsApiUrl = `http://${HOST}/api/v1/users/${user_id}/bookings`;
+    setTimeout(function() {
+        const userBookingsApiUrl = `http://${HOST}/api/v1/users/${user_id}/bookings`;
 
-    // Fetch and display specific booking information
-    getBookingDetails(bookingId, $(".booking-details"), 'html');
-    // Fetch and display all user bookings
-    $.ajax({
-        url: userBookingsApiUrl,
-        method: 'GET',
-        success: function (userBookings) {
-            for (const booking of userBookings) {
-                const bookingId = booking.id;
-                getBookingDetails(bookingId, $(".user-bookings"), 'append');
+        // Fetch and display specific booking information
+        getBookingDetails(bookingId, $(".booking-details"), 'html');
+        // Fetch and display all user bookings
+        $.ajax({
+            url: userBookingsApiUrl,
+            method: 'GET',
+            success: function (userBookings) {
+                for (const booking of userBookings) {
+                    const bookingId = booking.id;
+                    getBookingDetails(bookingId, $(".user-bookings"), 'append');
+                }
+            },
+            error: function (error) {
+                console.error("Error fetching user bookings:", error);
             }
-        },
-        error: function (error) {
-            console.error("Error fetching user bookings:", error);
-        }
-    });
+        });
+    }, 2000); // Simulated loading time of 2 seconds
 });
