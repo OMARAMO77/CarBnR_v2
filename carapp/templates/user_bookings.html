@@ -5,16 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Booking Information</title>
+<style>
+    .placeholder-content .placeholder {
+        display: block;
+        height: 1rem;
+        background-color: #e0e0e0;
+        border-radius: 0.25rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .placeholder-content .placeholder-wave {
+        background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+        background-size: 200% 100%;
+        animation: wave 1.5s linear infinite;
+    }
+
+    .placeholder-content .placeholder-image {
+        width: 100%;
+        height: 245px;
+        background-color: #e0e0e0;
+        border-radius: 0.25rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .placeholder-glow::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes wave {
+        0% {
+            background-position: -200% 0;
+        }
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+</style>
+
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Recent Booking:</h1>
         <div class="booking-details card mb-4 shadow-lg">
-
+            <div class="placeholder-content">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="placeholder-glow">
+                            <div class="placeholder placeholder-wave w-75 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-50 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-100 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-75 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-50 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-100 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-75 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-50 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-100 mb-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="placeholder-glow">
+                            <div class="placeholder-image bg-secondary mb-3" style="height: 245px;"></div>
+                            <div class="placeholder placeholder-wave w-75 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-50 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-100 mb-3"></div>
+                            <div class="placeholder placeholder-wave w-75 mb-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <h1 class="text-center mb-4">All Your Bookings:</h1>
         <div class="user-bookings card mb-4 shadow-lg">
-
+            <div class="placeholder-content">
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
