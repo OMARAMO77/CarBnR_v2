@@ -34,7 +34,9 @@ function checkedObjects (nObject) {
   if (nObject === 1) {
     $('.companies').text(names.sort().join(', '));
   } else if (nObject === 2) {
-    $('.locations').text(names.sort().join(', '));
+    $('.states').text(names.sort().join(', '));
+  } else if (nObject === 3) {
+    $('.cities').text(names.sort().join(', '));
   }
 }
 
