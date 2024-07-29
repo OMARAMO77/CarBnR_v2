@@ -58,31 +58,37 @@
   </header>
   <div class="container my-5 bg-white">
     <section class="filters mb-5">
-      <div class="row border p-3 text-center">
-        <div class="col-sm-6">
+      <div class="row border p-3 text-center d-flex align-items-center">
+        <div class="col-sm-4">
           <div class="dropdown">
             <h3 class="dropdown-toggle" id="statesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">States</h3>
-            <small class="locations text-muted">&nbsp;</small>
+            <small class="states text-muted">&nbsp;</small>
             <div class="dropdown-menu col p-3" style="max-height: 200px; overflow-y: auto;" aria-labelledby="statesDropdown">
               <ul class="list-unstyled ml-2">
                 {% for state in states %}
                 <li>
                   <h5>
-                    <input type="checkbox" data-id="{{ state[0].id }}" data-name="{{ state[0].name }}" class="state_input">
-                    {{ state[0].name }}:
+                    <input type="radio" name="state" data-id="{{ state[0].id }}" data-name="{{ state[0].name }}" class="state_input">
+                    {{ state[0].name }}
                   </h5>
-                  <ul class="list-unstyled ml-3">
-                    {% for city in state[1] %}
-                    <li><input type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}" class="city_input"> {{ city.name }}</li>
-                    {% endfor %}
-                  </ul>
                 </li>
                 {% endfor %}
               </ul>
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
+          <div class="dropdown mt-3" id="citiesDropdownContainer">
+            <h3 class="dropdown-toggle" id="citiesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cities</h3>
+            <small class="cities text-muted">&nbsp;</small>
+            <div class="dropdown-menu col p-3" style="max-height: 200px; overflow-y: auto;" aria-labelledby="citiesDropdown">
+              <ul class="list-unstyled ml-2" id="citiesList">
+                <!-- Cities will be loaded here -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
           <div class="dropdown">
             <h3 class="dropdown-toggle" id="locationsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations</h3>
             <div><small class="companies text-muted">&nbsp;</small></div>
@@ -100,6 +106,9 @@
          <button class="btn btn-primary" type="button" onclick="searchCars()">Search</button>
       </div>
     </section>
+    <div class="text-center mb-4">
+      <h1>Cars</h1>
+    </div>
     <section class="cars row">
      <!-- More articles can be added in the same way -->
     </section>
@@ -121,5 +130,41 @@
   <script src="/static/scripts/select_cars.js?{{ cache_id }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const stateInputs = document.querySelectorAll('.state_input');
+      const citiesDropdownContainer = document.getElementById('citiesDropdownContainer');
+      const citiesList = document.getElementById('citiesList');
+
+      stateInputs.forEach(input => {
+        input.addEventListener('change', function () {
+          if (this.checked) {
+            citiesDropdownContainer.style.display = 'block';
+            const stateId = this.getAttribute('data-id');
+
+            // Clear the existing cities
+            citiesList.innerHTML = '';
+
+            // Load cities for the selected state
+            fetch(`http://3.83.253.202/api/v1/states/${stateId}/cities`)
+              .then(response => response.json())
+              .then(cities => {
+                cities.forEach(city => {
+                  const li = document.createElement('li');
+                  const checkbox = document.createElement('input');
+                  checkbox.type = 'checkbox';
+                  checkbox.setAttribute('data-id', city.id);
+                  checkbox.setAttribute('data-name', city.name);
+                  checkbox.classList.add('city_input');
+                  li.appendChild(checkbox);
+                  li.appendChild(document.createTextNode(` ${city.name}`));
+                  citiesList.appendChild(li);
+                });
+              });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
