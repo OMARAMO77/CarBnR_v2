@@ -21,7 +21,7 @@ server {
 
         location /select_cars {
                 include proxy_params;
-                proxy_pass http://127.0.0.1:5004/select_cars/;
+                proxy_pass http://127.0.0.1:5000/select_cars/;
         }
 
         location /with_rev {
@@ -31,7 +31,7 @@ server {
 
         location /carbnr {
                 include proxy_params;
-                proxy_pass http://127.0.0.1:5000/carbnr/;
+                proxy_pass http://127.0.0.1:5004/carbnr/;
         }
 
         location /static {
