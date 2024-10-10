@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Script to find and delete multiple __pycache__ directories
+
+if [ "$#" -ge 1 ]; then
+    for file in "$@"; do
+        # Get the directory path from command-line argument
+        directory_path="$file"
+        # Check if the directory exists
+        if [ -d "$directory_path" ]; then
+            # Find and delete __pycache__ directories
+            find "$directory_path" -type d -name "__pycache__" -exec rm -r {} +
+            echo "Deleted all __pycache__ directories in $directory_path"
+        else
+            echo "Directory not found: $directory_path"
+        fi
+        sleep 1
+    done
+else
+    # Check if the directory path is provided
+    echo "Usage: $0 <dir_path_1> <dir_path_2> <dir_path_3> ..."
+fi

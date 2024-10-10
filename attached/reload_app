@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# reload Gunicorn gracefully
+PID=$(pgrep gunicorn)   # or PID=$(lsof -t -i :5000)
+kill -s HUP $PID
+echo 'Gunicorn processes ('$PID') reloaded gracefully'

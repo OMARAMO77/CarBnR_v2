@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Terminate the process running on port 5000
+pid0=$(lsof -t -i :5000)
+kill $(lsof -t -i :5000)
+echo 'Process ('$pid0') terminated'
+sleep 1
+# Terminate the process running on port 5002
+pid1=$(lsof -t -i :5002)
+kill $(lsof -t -i :5002)
+echo 'Process ('$pid1') terminated'
+/delete_pycache /home/ubuntu/CarBnR_btstr
+

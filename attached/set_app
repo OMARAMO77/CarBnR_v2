@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+cd /home/ubuntu/CarBnR_btstr
+pwd2=$(pwd)
+export CARBNR_MYSQL_USER=carbnr_dev CARBNR_MYSQL_PWD=carbnr_dev_pwd CARBNR_MYSQL_HOST=localhost CARBNR_MYSQL_DB=carbnr_dev_db CARBNR_TYPE_STORAGE=db
+tmux new-session -d 'gunicorn --bind 0.0.0.0:5002 api.v1.app:app'
+cd /home/ubuntu/CarBnR_btstr
+pwd0=$(pwd)
+export CARBNR_MYSQL_USER=carbnr_dev CARBNR_MYSQL_PWD=carbnr_dev_pwd CARBNR_MYSQL_HOST=localhost CARBNR_MYSQL_DB=carbnr_dev_db CARBNR_TYPE_STORAGE=db
+tmux new-session -d 'gunicorn --bind 0.0.0.0:5000 carapp.carbnr:app'
+sleep 1
+echo '******An app in ('$pwd2') api.v1.app set on 5002******'
+echo $(lsof -t -i :5002)
+echo '******An app in ('$pwd0') carapp.carapp set on 5000******'
+echo $(lsof -t -i :5000)
