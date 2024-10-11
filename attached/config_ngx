@@ -13,14 +13,14 @@ print_message() {
 }
 
 # Copy configuration and HTML files
-if cp my_config_btstr /etc/nginx/sites-available/; then
+if cp /home/ubuntu/CarBnR_btstr/attached/my_config_btstr /etc/nginx/sites-available/; then
     print_message "Configuration file copied successfully." "$GREEN"
 else
     print_message "Failed to copy configuration file." "$RED"
     exit 1
 fi
 
-if cp 404.html /var/www/html/; then
+if cp /home/ubuntu/CarBnR_btstr/attached/404.html /var/www/html/; then
     print_message "404.html copied successfully." "$GREEN"
 else
     print_message "Failed to copy 404.html." "$RED"
