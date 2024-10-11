@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# ANSI color codes for output
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m'  # No color (reset)
+
+# Check if the correct number of arguments is provided
+if [[ $# -ne 2 ]]; then
+    echo -e "${RED}Usage: $0 <directory> <new_ip>${NC}"
+    exit 1
+fi
+
+# Assign arguments to variables
+directory=$1
+new_ip=$2
+
+# Validate the new IP format
+if ! [[ $new_ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo -e "${RED}Error: Invalid IP format.${NC}"
+    exit 1
+fi
+
+# Find and replace IP addresses in JavaScript files
+changed_files=()
+for file in $(find "$directory" -type f -name "*.js"); do
+    # Check if the file contains an IP address (IPv4 pattern)
+    if grep -Eqo '([0-9]{1,3}\.){3}[0-9]{1,3}' "$file"; then
+        # Replace the existing IP with the new one and back up the original
+        sed -i.bak "s/\([0-9]\{1,3\}\.\)\{3\}[0-9]\{1,3\}/$new_ip/g" "$file"
+        changed_files+=("$file")
+        # Remove the backup file
+        rm "${file}.bak"
+    fi
+done
+
+# Output information about changed files
+if [[ ${#changed_files[@]} -gt 0 ]]; then
+    echo -e "${GREEN}The following files have been modified:${NC}"
+    for changed_file in "${changed_files[@]}"; do
+        echo -e "${GREEN}$changed_file${NC}"
+    done
+else
+    echo -e "${RED}No IP addresses found in JavaScript files.${NC}"
+fi
