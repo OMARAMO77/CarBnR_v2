@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = '3.83.253.202';
+const HOST = '100.26.167.186';
 const locationObj = {};
 const stateObj = {};
 const cityObj = {};

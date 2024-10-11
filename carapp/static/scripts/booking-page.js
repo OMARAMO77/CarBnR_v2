@@ -7,7 +7,7 @@ function isValidDate(dateString) {
     }
 
 $(document).ready(function() {
-    const HOST = '3.83.253.202';
+    const HOST = '100.26.167.186';
     const carApiUrl = `http://${HOST}/api/v1/cars/${carId}`;
 
     // Mocking the API call as an asynchronous operation
