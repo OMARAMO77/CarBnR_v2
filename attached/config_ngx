@@ -1,7 +1,59 @@
 #!/usr/bin/env bash
-cp my_config_btstr /etc/nginx/sites-available/
-cp 404.html /var/www/html/
-rm /etc/nginx/sites-enabled/*
-sudo ln -sf /etc/nginx/sites-available/my_config_btstr /etc/nginx/sites-enabled/
-sudo service nginx restart
-sudo service nginx status
+
+# ANSI color codes
+GREEN='\033[0;32m'  # Green for success messages
+RED='\033[0;31m'    # Red for error messages
+NC='\033[0m'        # No color (reset)
+
+# Function to print messages
+print_message() {
+    local msg="$1"
+    local color="$2"
+    echo -e "${color}${msg}${NC}"
+}
+
+# Copy configuration and HTML files
+if cp my_config_btstr /etc/nginx/sites-available/; then
+    print_message "Configuration file copied successfully." "$GREEN"
+else
+    print_message "Failed to copy configuration file." "$RED"
+    exit 1
+fi
+
+if cp 404.html /var/www/html/; then
+    print_message "404.html copied successfully." "$GREEN"
+else
+    print_message "Failed to copy 404.html." "$RED"
+    exit 1
+fi
+
+# Remove existing enabled sites
+if rm /etc/nginx/sites-enabled/*; then
+    print_message "Existing enabled sites removed successfully." "$GREEN"
+else
+    print_message "Failed to remove existing enabled sites." "$RED"
+    exit 1
+fi
+
+# Create a symbolic link for the new configuration
+if sudo ln -sf /etc/nginx/sites-available/my_config_btstr /etc/nginx/sites-enabled/; then
+    print_message "Symbolic link created successfully." "$GREEN"
+else
+    print_message "Failed to create symbolic link." "$RED"
+    exit 1
+fi
+
+# Restart Nginx service
+if sudo service nginx restart; then
+    print_message "Nginx restarted successfully." "$GREEN"
+else
+    print_message "Failed to restart Nginx." "$RED"
+    exit 1
+fi
+
+# Check Nginx status
+if sudo service nginx status; then
+    print_message "Nginx is running." "$GREEN"
+else
+    print_message "Nginx is not running." "$RED"
+fi
