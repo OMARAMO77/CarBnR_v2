@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = '100.26.167.186';
+const HOST = '3.83.253.202';
 const locationObj = {};
 const stateObj = {};
 const cityObj = {};
@@ -35,7 +35,7 @@ function checkedObjects(nObject) {
 }
 
 function apiStatus() {
-  const API_URL = `http://${HOST}/api/v1/status/`;
+  const API_URL = `${HOST}/api/v1/status/`;
   $.get(API_URL, (data, textStatus) => {
     if (textStatus === 'success' && data.status === 'OK') {
       $('#api_status').addClass('available');
@@ -46,7 +46,7 @@ function apiStatus() {
 }
 
 function searchCars() {
-  const CARS_URL = `http://${HOST}/api/v1/cars_search/`;
+  const CARS_URL = `${HOST}/api/v1/cars_search/`;
   $.ajax({
     url: CARS_URL,
     type: 'POST',
@@ -95,7 +95,7 @@ function bookCar(carId) {
   const pickupDate = '2023-01-01'; // Replace with actual pickup date
   const returnDate = '2023-01-05'; // Replace with actual return date
 
-  const BOOKING_URL = `http://${HOST}/api/v1/bookings/`;
+  const BOOKING_URL = `${HOST}/api/v1/bookings/`;
   $.ajax({
     url: BOOKING_URL,
     type: 'POST',

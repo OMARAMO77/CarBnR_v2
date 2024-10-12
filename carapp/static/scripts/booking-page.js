@@ -7,8 +7,8 @@ function isValidDate(dateString) {
     }
 
 $(document).ready(function() {
-    const HOST = '100.26.167.186';
-    const carApiUrl = `http://${HOST}/api/v1/cars/${carId}`;
+    const HOST = '3.83.253.202';
+    const carApiUrl = `${HOST}/api/v1/cars/${carId}`;
 
     // Mocking the API call as an asynchronous operation
     $.ajax({
@@ -21,7 +21,7 @@ $(document).ready(function() {
             const model = data.model;
             const year = data.year;
             const car_type = brand + ' ' + model + ' ' + year;
-            const locationApiUrl = `http://${HOST}/api/v1/locations/${location_id}`;
+            const locationApiUrl = `${HOST}/api/v1/locations/${location_id}`;
             // Function to calculate the total cost
             $("#pickup_date, #return_date").on('input', function() {
                 const pickup_date = $("#pickup_date").val();
@@ -69,7 +69,7 @@ $(document).ready(function() {
             });
             // Add click event for the Confirm Booking button
             $("#confirmBookingBtn").on("click", function() {
-                const bookingApiUrl = `http://${HOST}/api/v1/cars/${carId}/bookings`;
+                const bookingApiUrl = `${HOST}/api/v1/cars/${carId}/bookings`;
                 const return_date = $("#return_date").val();
                 const pickup_date = $("#pickup_date").val();
                 const dateTime = $("#dateTime").val();

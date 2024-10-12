@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = '100.26.167.186';
+const HOST = '3.83.253.202';
 
 function init() {
     // Add event listener to the form submission
@@ -23,7 +23,7 @@ function LogintoAccount() {
         return false; // Prevent form submission
     }
 
-    const USERS_URL = `http://${HOST}/api/v1/login`;
+    const USERS_URL = `${HOST}/api/v1/login`;
     $.ajax({
         url: USERS_URL,
         type: 'POST',
