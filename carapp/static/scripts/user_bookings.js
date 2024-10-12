@@ -1,9 +1,9 @@
 const bookingId = getParameterByName('bookingId');
 const user_id = getParameterByName('userId');
-const HOST = '0.0.0.0';
+const HOST = '3.83.253.202';
 
 function getBookingDetails(bookingId, renderTarget, renderMethod) {
-    const userApiUrl = `http://${HOST}/api/v1/users/${user_id}`;
+    const userApiUrl = `${HOST}/api/v1/users/${user_id}`;
     $.ajax({
         url: userApiUrl,
         method: 'GET',
@@ -13,7 +13,7 @@ function getBookingDetails(bookingId, renderTarget, renderMethod) {
             const userName = first_name + ' ' + last_name;
             const userEmail = data.email;
 
-            const bookingApiUrl = `http://${HOST}/api/v1/bookings/${bookingId}`;
+            const bookingApiUrl = `${HOST}/api/v1/bookings/${bookingId}`;
             $.ajax({
                 url: bookingApiUrl,
                 method: 'GET',
@@ -27,7 +27,7 @@ function getBookingDetails(bookingId, renderTarget, renderMethod) {
                     const formattedDateString = new Date(bookingDate);
                     const booking_date = formattedDateString.toUTCString();
 
-                    const carApiUrl = `http://${HOST}/api/v1/cars/${car_id}`;
+                    const carApiUrl = `${HOST}/api/v1/cars/${car_id}`;
                     $.ajax({
                         url: carApiUrl,
                         method: "GET",
@@ -40,7 +40,7 @@ function getBookingDetails(bookingId, renderTarget, renderMethod) {
                             const year = data.year;
                             const car_type = brand + ' ' + model + ' ' + year;
 
-                            const locationApiUrl = `http://${HOST}/api/v1/locations/${location_id}`;
+                            const locationApiUrl = `${HOST}/api/v1/locations/${location_id}`;
                             $.ajax({
                                 url: locationApiUrl,
                                 method: "GET",
@@ -117,7 +117,7 @@ function getBookingDetails(bookingId, renderTarget, renderMethod) {
 
 $(document).ready(function() {
     setTimeout(function() {
-        const userBookingsApiUrl = `http://${HOST}/api/v1/users/${user_id}/bookings`;
+        const userBookingsApiUrl = `${HOST}/api/v1/users/${user_id}/bookings`;
 
         // Fetch and display specific booking information
         getBookingDetails(bookingId, $(".booking-details"), 'html');

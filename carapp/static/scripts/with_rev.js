@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = '0.0.0.0';
+const HOST = '3.83.253.202';
 const locationObj = {};
 const stateObj = {};
 const cityObj = {};
@@ -29,7 +29,7 @@ function checkedObjects (nObject) {
 }
 
 function apiStatus () {
-  const API_URL = `http://${HOST}/api/v1/status/`;
+  const API_URL = `${HOST}/api/v1/status/`;
   $.get(API_URL, (data, textStatus) => {
     if (textStatus === 'success' && data.status === 'OK') {
       $('#api_status').addClass('available');
@@ -40,7 +40,7 @@ function apiStatus () {
 }
 
 function searchCars () {
-  const CARS_URL = `http://${HOST}/api/v1/cars_search/`;
+  const CARS_URL = `${HOST}/api/v1/cars_search/`;
   $.ajax({
     url: CARS_URL,
     type: 'POST',
@@ -94,7 +94,7 @@ function showReviews (obj) {
   }
   if (obj.textContent === 'Show') {
     obj.textContent = 'Hide';
-    $.get(`http://${HOST}/api/v1/cars/${obj.id}/reviews`, (data, textStatus) => {
+    $.get(`${HOST}/api/v1/cars/${obj.id}/reviews`, (data, textStatus) => {
       if (textStatus === 'success') {
         $(`#${obj.id}n`).html(data.length + ' Reviews');
         for (const review of data) {
@@ -115,7 +115,7 @@ function printReview (review, obj) {
   const day = dateOrdinal(date.getDate());
 
   if (review.user_id) {
-    $.get(`http://${HOST}/api/v1/users/${review.user_id}`, (data, textStatus) => {
+    $.get(`${HOST}/api/v1/users/${review.user_id}`, (data, textStatus) => {
       if (textStatus === 'success') {
         $(`#${obj.id}r`).append(
           `<li><h3>From ${data.first_name} ${data.last_name} the ${day + ' ' + month + ' ' + date.getFullYear()}</h3>
