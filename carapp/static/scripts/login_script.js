@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = '100.26.167.186';
+const HOST = '0.0.0.0';
 
 function init() {
     // Add event listener to the form submission

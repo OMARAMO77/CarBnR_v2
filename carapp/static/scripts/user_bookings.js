@@ -1,6 +1,6 @@
 const bookingId = getParameterByName('bookingId');
 const user_id = getParameterByName('userId');
-const HOST = '100.26.167.186';
+const HOST = '0.0.0.0';
 
 function getBookingDetails(bookingId, renderTarget, renderMethod) {
     const userApiUrl = `http://${HOST}/api/v1/users/${user_id}`;
