@@ -1,11 +1,19 @@
-# nano /etc/nginx/sites-available/my_config_btstr
-# sudo ln -sf /etc/nginx/sites-available/my_config_btstr /etc/nginx/sites-enabled/
+# nano /etc/nginx/sites-available/my_config_btstr_ssl
+# sudo ln -sf /etc/nginx/sites-available/my_config_btstr_ssl /etc/nginx/sites-enabled/
 # sudo service nginx restart
 # Set up NGINX
 server {
-	listen 80;
-	server_name _;
+    listen 443 ssl;
+    server_name www.eromo.tech;
+
+    ssl_certificate /etc/letsencrypt/live/www.eromo.tech/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.eromo.tech/privkey.pem;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+
 	root /home/ubuntu/CarBnR_btstr/carapp/templates;
+    index index.html;
 
     error_page 404 /404.html;
 
@@ -19,7 +27,7 @@ server {
 		proxy_pass http://127.0.0.1:5002/api/;
 	}
 
-	location / {
+	location /select_cars {
 		include proxy_params;
 		proxy_pass http://127.0.0.1:5000/select_cars/;
 	}
@@ -38,4 +46,16 @@ server {
 		autoindex off;
 		alias /home/ubuntu/CarBnR_btstr/carapp/static;
 	}
+
+    # Deny access to sensitive files
+    location ~ /\.(git|env) {
+        deny all;
+    }
+}
+server {
+    listen 80;
+    server_name www.eromo.tech;
+
+    # Redirect HTTP to HTTPS
+    return 301 https://$host$request_uri;
 }
