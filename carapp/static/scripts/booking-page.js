@@ -7,7 +7,7 @@ function isValidDate(dateString) {
     }
 
 $(document).ready(function() {
-    const HOST = '3.83.253.202';
+    const HOST = 'https://www.eromo.tech';
     const carApiUrl = `${HOST}/api/v1/cars/${carId}`;
 
     // Mocking the API call as an asynchronous operation

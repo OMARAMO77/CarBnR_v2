@@ -1,6 +1,6 @@
 const bookingId = getParameterByName('bookingId');
 const user_id = getParameterByName('userId');
-const HOST = '3.83.253.202';
+const HOST = 'https://www.eromo.tech';
 
 function getBookingDetails(bookingId, renderTarget, renderMethod) {
     const userApiUrl = `${HOST}/api/v1/users/${user_id}`;

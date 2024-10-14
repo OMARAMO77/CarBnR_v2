@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = '3.83.253.202';
+const HOST = 'https://www.eromo.tech';
 const locationObj = {};
 const stateObj = {};
 const cityObj = {};
