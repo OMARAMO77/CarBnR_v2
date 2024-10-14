@@ -12,8 +12,8 @@ server {
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_prefer_server_ciphers on;
 
-	root /home/ubuntu/CarBnR_btstr/carapp/templates;
-    index index.html;
+    root /home/ubuntu/CarBnR_btstr/carapp/templates;
+    index landing-page.html;
 
     error_page 404 /404.html;
 
@@ -22,30 +22,30 @@ server {
         internal;
     }
 
-	location /api/ {
-		include proxy_params;
-		proxy_pass http://127.0.0.1:5002/api/;
-	}
+    location /api/ {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:5002/api/;
+    }
 
-	location /select_cars {
-		include proxy_params;
-		proxy_pass http://127.0.0.1:5000/select_cars/;
-	}
+    location /select_cars {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:5000/select_cars/;
+    }
 
-	location /with_rev {
-		include proxy_params;
-		proxy_pass http://127.0.0.1:5008/with_rev/;
-	}
+    location /with_rev {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:5008/with_rev/;
+    }
 
-	location /carbnr {
-		include proxy_params;
-		proxy_pass http://127.0.0.1:5009/carbnr/;
-	}
+    location /carbnr {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:5009/carbnr/;
+    }
 
-	location /static {
-		autoindex off;
-		alias /home/ubuntu/CarBnR_btstr/carapp/static;
-	}
+    location /static {
+        autoindex off;
+        alias /home/ubuntu/CarBnR_btstr/carapp/static;
+    }
 
     # Deny access to sensitive files
     location ~ /\.(git|env) {
