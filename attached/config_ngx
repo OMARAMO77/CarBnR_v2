@@ -6,12 +6,12 @@ RED='\033[0;31m'    # Red for error messages
 NC='\033[0m'        # No color (reset)
 
 # Paths
-CONFIG_SOURCE="/home/ubuntu/CarBnR_btstr/attached/my_config_btstr_ssl"
-CONFIG_DEST="/etc/nginx/sites-available/my_config_btstr_ssl"
-ERROR_PAGE_SOURCE="/home/ubuntu/CarBnR_btstr/attached/404.html"
+CONFIG_SOURCE="/CarBnR_v2/attached/locations_config"
+CONFIG_DEST="/etc/nginx/sites-available/locations_config"
+ERROR_PAGE_SOURCE="/CarBnR_v2/attached/404.html"
 ERROR_PAGE_DEST="/var/www/html/404.html"
 NGINX_ENABLED="/etc/nginx/sites-enabled/"
-NGINX_AVAILABLE="/etc/nginx/sites-available/my_config_btstr_ssl"
+NGINX_AVAILABLE="/etc/nginx/sites-available/locations_config"
 
 # Function to print messages
 print_message() {
@@ -44,7 +44,7 @@ else
 fi
 
 # Create a symbolic link for the new configuration
-if sudo ln -sf "$NGINX_AVAILABLE" "$NGINX_ENABLED/my_config_btstr_ssl"; then
+if sudo ln -sf "$NGINX_AVAILABLE" "$NGINX_ENABLED/locations_config"; then
     print_message "Symbolic link created successfully." "$GREEN"
 else
     print_message "Failed to create symbolic link." "$RED"
