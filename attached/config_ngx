@@ -5,6 +5,14 @@ GREEN='\033[0;32m'  # Green for success messages
 RED='\033[0;31m'    # Red for error messages
 NC='\033[0m'        # No color (reset)
 
+# Paths
+CONFIG_SOURCE="/home/ubuntu/CarBnR_btstr/attached/my_config_btstr_ssl"
+CONFIG_DEST="/etc/nginx/sites-available/my_config_btstr_ssl"
+ERROR_PAGE_SOURCE="/home/ubuntu/CarBnR_btstr/attached/404.html"
+ERROR_PAGE_DEST="/var/www/html/404.html"
+NGINX_ENABLED="/etc/nginx/sites-enabled/"
+NGINX_AVAILABLE="/etc/nginx/sites-available/my_config_btstr_ssl"
+
 # Function to print messages
 print_message() {
     local msg="$1"
@@ -13,14 +21,14 @@ print_message() {
 }
 
 # Copy configuration and HTML files
-if cp /home/ubuntu/CarBnR_btstr/attached/my_config_btstr /etc/nginx/sites-available/; then
+if sudo cp "$CONFIG_SOURCE" "$CONFIG_DEST"; then
     print_message "Configuration file copied successfully." "$GREEN"
 else
     print_message "Failed to copy configuration file." "$RED"
     exit 1
 fi
 
-if cp /home/ubuntu/CarBnR_btstr/attached/404.html /var/www/html/; then
+if sudo cp "$ERROR_PAGE_SOURCE" "$ERROR_PAGE_DEST"; then
     print_message "404.html copied successfully." "$GREEN"
 else
     print_message "Failed to copy 404.html." "$RED"
@@ -28,7 +36,7 @@ else
 fi
 
 # Remove existing enabled sites
-if rm /etc/nginx/sites-enabled/*; then
+if sudo rm -f ${NGINX_ENABLED}*; then
     print_message "Existing enabled sites removed successfully." "$GREEN"
 else
     print_message "Failed to remove existing enabled sites." "$RED"
@@ -36,24 +44,20 @@ else
 fi
 
 # Create a symbolic link for the new configuration
-if sudo ln -sf /etc/nginx/sites-available/my_config_btstr /etc/nginx/sites-enabled/; then
+if sudo ln -sf "$NGINX_AVAILABLE" "$NGINX_ENABLED/my_config_btstr_ssl"; then
     print_message "Symbolic link created successfully." "$GREEN"
 else
     print_message "Failed to create symbolic link." "$RED"
     exit 1
 fi
 
-# Restart Nginx service
-if sudo service nginx restart; then
-    print_message "Nginx restarted successfully." "$GREEN"
-else
-    print_message "Failed to restart Nginx." "$RED"
-    exit 1
-fi
+# Test NGINX configuration
+sudo nginx -t
 
-# Check Nginx status
-if sudo service nginx status; then
-    print_message "Nginx is running." "$GREEN"
+# Restart NGINX service
+if [ $? -eq 0 ]; then
+  sudo service nginx restart
+  print_message "Nginx restarted successfully." "$GREEN"
 else
-    print_message "Nginx is not running." "$RED"
+  print_message "NGINX configuration test failed. Please check the output above." "$RED"
 fi
