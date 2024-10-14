@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# ANSI color codes for output messages
+GREEN='\033[0;32m'  # Green for success
+RED='\033[0;31m'    # Red for error
+NC='\033[0m'        # No color
+
+# Check if the number of arguments is at least 3 (files + old_ip + new_ip)
+if [ "$#" -lt 3 ]; then
+    echo -e "${RED}Usage: $0 FILE1 FILE2 ... old_ip new_ip${NC}"
+    exit 1
+fi
+
+# Extract old IP and new IP from the arguments
+OLD_IP="${@: -2:1}"
+NEW_IP="${@: -1}"
+
+# Check if the old and new IPs are valid
+if [[ ! $OLD_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo -e "${RED}Error: '$OLD_IP' is not a valid IP address.${NC}"
+    exit 1
+fi
+
+if [[ ! $NEW_IP =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo -e "${RED}Error: '$NEW_IP' is not a valid IP address.${NC}"
+    exit 1
+fi
+
+# Loop through all provided files (excluding the last two arguments, which are IPs)
+for FILE in "${@:1:$#-2}"; do
+    # Check if the file exists
+    if [ ! -f "$FILE" ]; then
+        echo -e "${RED}Error: File '$FILE' does not exist.${NC}"
+        continue
+    fi
+
+    # Check if the old IP exists in the file
+    if grep -q "$OLD_IP" "$FILE"; then
+        # Use sed to substitute old IP with new IP
+        sed -i "s/$OLD_IP/$NEW_IP/g" "$FILE"
+        
+        if [ $? -eq 0 ]; then
+            echo -e "${GREEN}Successfully replaced '$OLD_IP' with '$NEW_IP' in '$FILE'.${NC}"
+        else
+            echo -e "${RED}Error: Failed to replace IP in '$FILE'.${NC}"
+        fi
+    else
+        echo -e "${RED}Error: '$OLD_IP' not found in '$FILE'.${NC}"
+    fi
+done
