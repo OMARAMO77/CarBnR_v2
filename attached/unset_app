@@ -9,7 +9,7 @@ NC='\033[0m'        # No color (reset)
 terminate_process() {
   port=$1
   pids=$(lsof -t -i :$port)
-  
+
   if [[ -n "$pids" ]]; then
     # Loop through each PID and kill it
     for pid in $pids; do
@@ -25,4 +25,4 @@ terminate_process() {
 terminate_process 5000
 terminate_process 5002
 
-/delete_pycache /home/ubuntu/CarBnR_btstr
+/CarBnR_v2/attached/delete_pycache /CarBnR_v2
