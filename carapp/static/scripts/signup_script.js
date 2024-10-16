@@ -1,5 +1,5 @@
 $(document).ready(init);
-const HOST = 'https://www.eromo.tech';
+const HOST = 'https://omar.eromo.tech';
 
 function init() {
     // Add event listener to the form submission
