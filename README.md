@@ -8,6 +8,17 @@ Welcome to CarBnR, the ultimate web app for hassle-free car browsing and booking
 - **Final Project Blog Article:** [CarBnR Blog](https://github.com/OMARAMO77/Blog-Post-Portfolio?tab=readme-ov-file#carbnr---car-booking-and-renting-web-app)
 - **Author(s) LinkedIn:**
   - [Omar ACHKIR](https://www.linkedin.com/in/OMARAMO77/)
+root@60f3d863c5ff:/CarBnR_v2# cat README.md
+# CarBnR - Car Booking and Renting Web App
+
+## Introduction
+
+Welcome to CarBnR, the ultimate web app for hassle-free car browsing and booking. Designed with simplicity in mind, you can explore available cars without the need to sign up initially. Only when you decide to book a car will you be prompted to create an account or log in, choose your rental dates, and confirm the booking.
+
+- **Deployed Site:** [CarBnR Web App](https://www.eromo.tech)
+- **Final Project Blog Article:** [CarBnR Blog](https://github.com/OMARAMO77/Blog-Post-Portfolio?tab=readme-ov-file#carbnr---car-booking-and-renting-web-app)
+- **Author(s) LinkedIn:**
+  - [Omar ACHKIR](https://www.linkedin.com/in/OMARAMO77/)
 
 ![CarBnR Screenshot](https://github.com/OMARAMO77/CarBnR_btstr/blob/master/web-app.png)
 
@@ -17,13 +28,12 @@ To get started with CarBnR, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/OMARAMO77/CarBnR.git`
 2. Navigate to the project directory: `cd CarBnR`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Set up your Python virtual environment: `python -m venv venv`
-5. Activate the virtual environment: `source venv/bin/activate` (Linux)
-6. Install Python dependencies: `pip install -r requirements.txt`
-7. Set up the MySQL database: `mysql -u username -p < schema.sql`
-8. Configure Nginx for CarBnR: Example configuration file in `/nginx-config/carbnr.conf`.
-9. Start the Python application: `python3 carbnr/app.py`
+3. Set up the MySQL database: `mysql -u username -p < schema.sql`
+4. Configure Nginx for CarBnR: Example configuration file in `/nginx-config/carbnr.conf`.
+5. Set up your Python virtual environment: `python -m venv venv`
+6. Activate the virtual environment: `source venv/bin/activate` (Linux)
+7. Install Python dependencies: `pip install -r requirements.txt`
+8. Start the Python application: `python3 carbnr/app.py`
 
 ## Tech Stack
 
