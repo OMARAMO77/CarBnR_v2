@@ -42,13 +42,9 @@ def cars_search():
     data = request.get_json()
 
     if data and len(data):
-        states = data.get('states', None)
-        cities = data.get('cities', None)
         locations = data.get('locations', None)
 
     if not data or not len(data) or (
-            not states and
-            not cities and
             not locations):
         cars = storage.all(Car).values()
         list_cars = []
@@ -57,26 +53,6 @@ def cars_search():
         return jsonify(list_cars)
 
     list_cars = []
-    if states:
-        states_obj = [storage.get(State, s_id) for s_id in states]
-        for state in states_obj:
-            if state:
-                for city in state.cities:
-                    if city:
-                        for location in city.locations:
-                            if location:
-                                for car in location.cars:
-                                    list_cars.append(car)
-
-    if cities:
-        city_obj = [storage.get(City, c_id) for c_id in cities]
-        for city in city_obj:
-            if city:
-                for location in city.locations:
-                    if location:
-                        for car in location.cars:
-                            if car not in list_cars:
-                                list_cars.append(car)
 
     if locations:
         locations_obj = [storage.get(Location, l_id) for l_id in locations]

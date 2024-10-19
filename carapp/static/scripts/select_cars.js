@@ -10,18 +10,18 @@ function init () {
     obj = locationObj;
     checkedObjects.call(this, 1);
   });
-  $('.state_input').change(function () {
-    obj = stateObj;
-    checkedObjects.call(this, 2);
-  });
-  $('.city_input').change(function () {
-    obj = cityObj;
-    checkedObjects.call(this, 3);
-  });
+//  $('.state_input').change(function () {
+//    obj = stateObj;
+//    checkedObjects.call(this, 2);
+//  });
+//  $('.city_input').change(function () {
+//    obj = cityObj;
+//    checkedObjects.call(this, 3);
+//  });
 // Call the searchCars and apiStatus functions when the document is ready
 
   apiStatus();
-  searchCars();
+//  searchCars();
 }
 
 function checkedObjects (nObject) {
@@ -58,9 +58,7 @@ function searchCars() {
     type: 'POST',
     headers: { 'Content-Type': 'application/json' },
     data: JSON.stringify({
-      locations: Object.values(locationObj),
-      states: Object.values(stateObj),
-      cities: Object.values(cityObj)
+      locations: Object.values(locationObj)
     }),
     success: function (response) {
       $('SECTION.cars').empty();
