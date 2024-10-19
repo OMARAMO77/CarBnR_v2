@@ -62,7 +62,7 @@
         <div class="col-sm-4">
           <div class="dropdown">
             <h3 class="dropdown-toggle" id="statesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">States</h3>
-            <small class="states text-muted">&nbsp;</small>
+            <small class="states text-muted">select a state</small>
             <div class="dropdown-menu col p-3" style="max-height: 200px; overflow-y: auto;" aria-labelledby="statesDropdown">
               <ul class="list-unstyled ml-2">
                 {% for state in states %}
@@ -80,7 +80,7 @@
         <div class="col-sm-4">
           <div class="dropdown mt-3" id="citiesDropdownContainer">
             <h3 class="dropdown-toggle" id="citiesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cities</h3>
-            <small class="cities text-muted">&nbsp;</small>
+            <small class="cities text-muted">select a city</small>
             <div class="dropdown-menu col p-3" style="max-height: 200px; overflow-y: auto;" aria-labelledby="citiesDropdown">
               <ul class="list-unstyled ml-2" id="citiesList">
                 <!-- Cities will be loaded here -->
@@ -91,12 +91,11 @@
         <div class="col-sm-4">
           <div class="dropdown">
             <h3 class="dropdown-toggle" id="locationsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations</h3>
-            <div><small class="companies text-muted">&nbsp;</small></div>
+            <small class="companies text-muted">select a company</small>
             <div class="dropdown-menu col p-3" style="max-height: 200px; overflow-y: auto;" aria-labelledby="locationsDropdown">
               <ul class="list-unstyled ml-3">
-                {% for location in locations %}
-                <li><input type="checkbox" data-id="{{ location.id }}" data-name="{{ location.name }}" class="location_input"> {{ location.name }}</li>
-                {% endfor %}
+              <ul class="list-unstyled ml-2" id="locationsList">
+                <!-- Locations will be loaded here -->
               </ul>
             </div>
           </div>
