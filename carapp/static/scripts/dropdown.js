@@ -15,7 +15,6 @@ $(document).ready(function () {
 
       // Clear the existing cities and locations text
       $citiesList.empty();
-      $citiesText.text('');
       $locationsDropdownContainer.hide();
       $locationsText.text('');
 
@@ -40,6 +39,7 @@ $(document).ready(function () {
             $radio.on('change', function () {
               if (this.checked) {
                 const cityName = $(this).data('name');
+                $citiesText.text('');
                 $citiesText.text(cityName);
 
                 $locationsDropdownContainer.show();
