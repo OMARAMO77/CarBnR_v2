@@ -16,7 +16,6 @@ $(document).ready(function () {
       // Clear the existing cities and locations text
       $citiesList.empty();
       $locationsDropdownContainer.hide();
-      $locationsText.text('');
 
       // Load cities for the selected state
       $.ajax({
@@ -47,7 +46,6 @@ $(document).ready(function () {
 
                 // Clear the existing locations
                 $locationsList.empty();
-                $locationsText.text('');
 
                 // Load locations for the selected city
                 $.ajax({
@@ -71,6 +69,7 @@ $(document).ready(function () {
                         $('.location_input:checked').each(function () {
                           selectedLocations.push($(this).data('name'));
                         });
+						$locationsText.text('');
                         $locationsText.text(selectedLocations.join(', '));
                       });
                     });
