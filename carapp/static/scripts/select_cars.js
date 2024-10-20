@@ -9,6 +9,7 @@ $(document).ready(function () {
   const $statesText = $('.states');
   const $citiesText = $('.cities');
   const $locationsText = $('.companies');
+  const $carHeadingText = $('.carHeading');
 
   // Event listener for states
   $('.state_input').on('change', function () {
@@ -102,7 +103,7 @@ $(document).ready(function () {
   window.searchCars = function() {
     const locations = Object.values(locationObj);
     if (locations.length === 0) {
-      alert('Please select at least one location.');
+      alert('Please select at least one location before searching.');
       return;
     }
 
@@ -114,6 +115,10 @@ $(document).ready(function () {
       data: JSON.stringify({ locations }),
       success: function (response) {
         $('SECTION.cars').empty();
+        // Add the sentence "These are the available cars"
+        const carHeading = 'These are the available cars';
+        $carHeadingText.text('');
+        $carHeadingText.text(carHeading);
         response.forEach(car => {
           const availabilityText = car.available ? `<strong>Available:</strong> $${car.price_by_day} a day` : `<strong>Not Available</strong>`;
           const article = `
