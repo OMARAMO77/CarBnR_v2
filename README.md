@@ -20,7 +20,7 @@ Welcome to CarBnR, the ultimate web app for hassle-free car browsing and booking
 - **Author(s) LinkedIn:**
   - [Omar ACHKIR](https://www.linkedin.com/in/OMARAMO77/)
 
-![CarBnR Screenshot](https://github.com/OMARAMO77/CarBnR_v2/blob/master/web-app.png)
+![CarBnR Screenshot](https://github.com/OMARAMO77/CarBnR_v2/blob/master/web-app2.png)
 
 ## Installation
 
