@@ -118,7 +118,7 @@ $(document).ready(function () {
           const availabilityText = car.available ? `<strong>Available:</strong> $${car.price_by_day} a day` : `<strong>Not Available</strong>`;
           const article = `
             <article class="col-sm-12 col-md-6 col-lg-4 mb-4" data-car-id="${car.id}">
-              <div class="card h-100 shadow-lg">
+              <div class="card h-100 shadow-lg" style="max-width: 322px; margin: 0 auto;">
                 <div class="position-relative border h-40">
                   <img src="${car.image_url.replace(/ /g, '_')}" loading="lazy" class="card-img-top" style="height: 180px;" alt="${car.brand} ${car.model} ${car.year}">
                   <div class="badge bg-danger position-absolute top-0 start-0" style="margin-left: -2em; margin-top: 1em;">New</div>
