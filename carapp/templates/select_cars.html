@@ -7,22 +7,7 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="../static/images/thumb.png?{{ cache_id }}" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <style>
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-    .dropdown-toggle::after {
-      display: none !important;
-    }
-        #api_status {
-        height: 20px;
-        background-color: #900;
-    }
-
-    #api_status.available {
-        height: 0px;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="/static/styles/select_cars.css?{{ cache_id }}">
 </head>
 <body>
   <header>
@@ -123,9 +108,6 @@
     </div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script>
-    console.log("jQuery version:", $.fn.jquery); // This should print "3.5.1"
-  </script>
   <script src="/static/scripts/select_cars.js?{{ cache_id }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
