@@ -116,7 +116,7 @@ $(document).ready(function () {
       success: function (response) {
         $('SECTION.cars').empty();
         // Add the sentence "These are the available cars"
-        const carHeading = 'These are the available cars';
+        const carHeading = 'Here are the cars available for your selection:';
         $carHeadingText.text('');
         $carHeadingText.text(carHeading);
         response.forEach(car => {
